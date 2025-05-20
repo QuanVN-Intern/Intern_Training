@@ -1,0 +1,68 @@
+1. Caching
+   - Định nghĩa: Lưu trữ tạm thời dữ liệu để giảm thời gian truy cập và tải trọng cho nguồn dữ liệu chính.
+   - Lợi ích: Tăng tốc độ truy cập, giảm tải cho hệ thống, cải thiện trải nghiệm người dùng.
+   - Khi nào sử dụng:
+     - Dữ liệu thường xuyên được truy cập.
+     - Truy vấn đến cơ sở dữ liệu tốn thời gian.
+     - Cần cải thiện hiệu suất ứng dụng.
+   - Cách sử dụng:
+     - Xác định dữ liệu cần cache.
+     - Chọn loại cache phù hợp (in-memory, disk, distributed).
+     - Thiết lập chính sách cache (cache-aside, write-through, TTL).
+   - Cách hoạt động:
+     - Kiểm tra cache trước.
+     - Nếu có, trả về dữ liệu ngay lập tức.
+     - Nếu không, lấy dữ liệu từ nguồn chính và lưu vào cache.
+
+2. Redis Cache
+   - Định nghĩa: Kho dữ liệu key-value trong bộ nhớ, hỗ trợ nhiều cấu trúc dữ liệu.
+   - Tính năng: Tốc độ cao, hỗ trợ persistency, replication, pub/sub.
+   - Khi nào sử dụng:
+     - Cần tốc độ truy cập cực nhanh.
+     - Dữ liệu cần lưu trữ lâu dài nhưng truy cập nhanh.
+     - Cần hỗ trợ các cấu trúc dữ liệu phức tạp.
+   - Cách sử dụng:
+     - Cài đặt Redis và cấu hình.
+     - Sử dụng thư viện Redis trong ngôn ngữ lập trình để kết nối và thao tác với dữ liệu.
+   - Cách hoạt động:
+     - Lưu trữ dữ liệu trong bộ nhớ, giúp truy cập nhanh chóng.
+     - Hỗ trợ các lệnh để thêm, sửa, xóa và truy xuất dữ liệu.
+
+3. Memcached
+   - Định nghĩa: Hệ thống cache phân tán lưu trữ dữ liệu key-value trong RAM.
+   - Tính năng: Tốc độ cao, đơn giản, không hỗ trợ persistency.
+   - Khi nào sử dụng:
+     - Cần cache dữ liệu tạm thời với tốc độ cao.
+     - Ứng dụng có nhiều truy vấn giống nhau.
+     - Không cần lưu trữ dữ liệu lâu dài.
+   - Cách sử dụng:
+     - Cài đặt Memcached và cấu hình.
+     - Sử dụng thư viện Memcached trong ngôn ngữ lập trình để kết nối và thao tác với dữ liệu.
+   - Cách hoạt động:
+     - Lưu trữ dữ liệu trong RAM, giúp truy cập nhanh chóng.
+     - Kiểm tra xem dữ liệu có trong bộ nhớ hay không.
+------------------------------------------------------------------------------------------------------------
+4. Vert.x
+   - Định nghĩa: Framework phát triển ứng dụng bất đồng bộ, có thể mở rộng và hiệu suất cao.
+   - Tính năng: Mô hình lập trình bất đồng bộ, hỗ trợ nhiều ngôn ngữ, dễ dàng phát triển microservices.
+   - Khi nào sử dụng:
+     - Phát triển ứng dụng cần xử lý nhiều yêu cầu đồng thời.
+     - Tích hợp với nhiều dịch vụ khác nhau.
+     - Cần ứng dụng nhẹ và có khả năng mở rộng.
+   - Cách sử dụng:
+     - Cài đặt Vert.x và thiết lập môi trường phát triển.
+     - Tạo các verticle để xử lý logic ứng dụng và định nghĩa router.
+   - Cách hoạt động:
+     - Sử dụng mô hình lập trình bất đồng bộ, cho phép xử lý nhiều yêu cầu cùng lúc.
+     - Sử dụng event bus để giao tiếp giữa các verticle.
+
+5. REST Vert.x
+   - Định nghĩa: Thư viện xây dựng API RESTful trên nền tảng Vert.x.
+   - Cách sử dụng:
+     - Cài đặt thư viện REST Vert.x.
+     - Định nghĩa router và các endpoint cho API.
+     - Xử lý yêu cầu HTTP và trả về phản hồi.
+   - Cách hoạt động:
+     - Định nghĩa các route cho yêu cầu HTTP.
+     - Router xác định endpoint và gọi hàm xử lý.
+     - Phản hồi được trả về dưới dạng JSON hoặc định dạng khác.
