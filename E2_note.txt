@@ -1,0 +1,34 @@
+Server Sent Message(SSE):
+
+- là kỹ thuật truyền dữ liệu theo thời gian thực từ server xuống client.
+- có cơ chế 1 chiều(chỉ cho phép server gửi dữ liệu xuống client) thông qua chỉ 1 kết nối HTTP.
+
+    ________ open event stream ________ 
+   |                                   |
+   |                                  \|/
+[Client]<----------event------------[Server]
+  /|\                                  |
+   |________ close event stream________|
+
+
+- Hữu ích cho ứng dụng realtime & có tính chất cập nhật liên tục ví dụ như:
+	+ Dashboard(thông tin trạng thái chuyến bay, tỷ giá tiền tệ, tỷ giá chứng khoán).
+	+ Newfeeds(tin tức mới được đưa vào server).
+	+ Status của server.
+
+- Ưu điểm:
+	+ Đơn giản và dễ triển khai vì chỉ sử dụng HTTP tiêu chuẩn.
+	+ Tương thích tốt với các trindh duyện hiện đại.
+	+ Kết nối ổn định với tính năng tự động reconnect trong môi trường mạng kém(Built in Reconnection).
+	+ Tối ưu tài nguyên vì SSE hoạt động theo hướng chỉ gửi dữ liệu khi thực sự có thông tin mới.
+
+- Nhược điểm:
+	+ Do chỉ hỗ trợ một chiều nên SSE không phù hợp để đáp ứng các yêu cầu giao tiếp 2 chiều như online chat.
+
+- Cách triển khai:
+	+ Tạo EventSource dể đón dữ liệu từ 1 thang web.
+			|
+	+ OnMessage sẽ xảy ra mỗi lần nhận được update
+	(thường sẽ lấy dữ liệu để hiển thị trong trang nhưng có thể làm cả các chức năng liên quan khác).
+			|
+	+ Đóng kết nối với hàm close.

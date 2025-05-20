@@ -1,0 +1,8 @@
+E1\API\RedisCacheAPI.class
+E1\Cache\MemCache.class
+E1\API\MemCacheAPI.class
+E1\Service\MemCacheService.class
+E1\Cache\RedisCache.class
+E1\Main\Main.class
+E1\Service\RedisCacheService.class
+E1\db\DBContext.class
