@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author quant
  */
-public class RestTemplate {
+public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

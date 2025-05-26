@@ -10,14 +10,13 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author quant
  */
+@RestCibtroller
 public class DataController {
 
     private final RestTemplate restTemplate;
-
     public DataController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
-
     @GetMapping("/data")
     public String getData() {
         String url = "https://sse.dev/test?interval=1";
