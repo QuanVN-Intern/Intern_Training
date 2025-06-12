@@ -6,10 +6,8 @@ package Main;
 import REST.TestRest;
 import io.vertx.core.Vertx;
 import io.vertx.ext.web.Router;
-import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import java.net.http.HttpResponse.BodyHandler;
-/**
+import org.zandero.rest.RestRouter;
  *
  * @author quant
  */
@@ -20,28 +18,22 @@ public class Main {
         Vertx vertx = Vertx.vertx();
         Router router = Router.router(vertx);
 
-        // Register the REST API
-        TestRest rest = new TestRest();
         router.route().handler(BodyHandler.create());
-        router.get("/test/echo").handler(Main::handleEcho);
 
-        // Start the HTTP server
+        try {
+            RestRouter.register(router, new TestRest());
+        } catch (Exception e) {
+            System.err.println("Failed to register REST endpoints: " + e.getMessage());
+        }
+
         vertx.createHttpServer()
             .requestHandler(router)
-            .listen(8080, http -> {
-                if (http.succeeded()) {
-                    System.out.println("HTTP server started on port 8080");
+            .listen(8080, result -> {
+                if (result.succeeded()) {
+                    System.out.println("Server started on port 8080");
                 } else {
-                    System.out.println("Failed to start HTTP server: " + http.cause());
+                    System.err.println("Server failed to start: " + result.cause());
                 }
             });
     }
-
-    private static void handleEcho(RoutingContext context) {
-        TestRest rest = new TestRest();
-        String response = rest.echo();
-        context.response()
-            .putHeader("content-type", "text/html")
-            .end(response);
-    }
-}
+} 

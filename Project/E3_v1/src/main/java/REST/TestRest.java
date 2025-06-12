@@ -17,8 +17,8 @@ public class TestRest {
 
     @GET
     @Path("/echo")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.TEXT_PLAIN)
     public String echo() {
-        return "Hello world!";
+        return "Hello from REST endpoint!";
     }
 }
